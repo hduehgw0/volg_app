@@ -1,0 +1,35 @@
+<div class="bg-white overflow-hidden shadow rounded-lg">
+  <div class="px-4 py-5 sm:p-6">
+    <div class="mb-6">
+      <% if @post.eyecatch.attached? %>
+        <%= image_tag @post.eyecatch, class: "w-full h-64 object-cover rounded-lg mb-4" %>
+      <% end %>
+      
+      <h1 class="text-3xl font-bold text-gray-900 mb-4"><%= @post.title %></h1>
+      
+      <div class="flex items-center justify-between text-sm text-gray-500 mb-6">
+        <div class="flex items-center space-x-4">
+          <span>投稿者: <%= link_to @post.user.name, user_path(@post.user), class: "hover:text-blue-600" %></span>
+          <span>投稿日: <%= @post.published_at&.strftime("%Y年%m月%d日 %H:%M") %></span>
+        </div>
+        
+        <% if user_signed_in? && @post.user == current_user %>
+          <div class="flex space-x-2">
+            <%= link_to "編集", edit_post_path(@post), class: "text-blue-600 hover:text-blue-800" %>
+            <%= link_to "削除", post_path(@post), method: :delete, 
+                        confirm: "本当に削除しますか？", 
+                        class: "text-red-600 hover:text-red-800" %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="prose max-w-none">
+        <%= simple_format(@post.content) %>
+      </div>
+    </div>
+    
+    <div class="pt-6 border-t border-gray-200">
+      <%= link_to "投稿一覧に戻る", posts_path, class: "text-blue-600 hover:text-blue-800" %>
+    </div>
+  </div>
+</div>

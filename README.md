@@ -1,24 +1,74 @@
-# README
+# Vlog App - Railsブログアプリケーション
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+このアプリケーションは、ユーザーが記事を投稿・管理できるシンプルなブログアプリケーションです。
 
-Things you may want to cover:
+## 機能
+- **認証機能**: Deviseを使用したユーザー登録・ログイン
+- **投稿機能**: 記事の作成・編集・削除・閲覧
+- **画像投稿**: Active Storageを使用したアイキャッチ画像のアップロード
+- **ページネーション**: Pagyを使用した投稿一覧のページ分け
+- **レスポンシブデザイン**: Tailwind CSSを使用したモダンなUI
 
-* Ruby version
+## 技術スタック
+- **フレームワーク**: Ruby on Rails 8.0.3
+- **認証**: Devise
+- **ページネーション**: Pagy
+- **スタイリング**: Tailwind CSS
+- **画像ストレージ**: Active Storage
+- **データベース**: SQLite3 (開発環境)
 
-* System dependencies
+## セットアップ
+```bash
+# 依存関係のインストール
+bundle install
 
-* Configuration
+# データベース作成・マイグレーション
+rails db:create
+rails db:migrate
 
-* Database creation
+# サーバー起動
+rails server
+```
 
-* Database initialization
+## 主要な機能
 
-* How to run the test suite
+### ユーザー管理
+- ユーザー登録・ログイン・ログアウト
+- プロフィール表示
+- ユーザー一覧
 
-* Services (job queues, cache servers, search engines, etc.)
+### 投稿管理
+- 記事の作成・編集・削除
+- アイキャッチ画像のアップロード
+- 投稿一覧・詳細表示
+- 自動的な要約生成
 
-* Deployment instructions
+### UI/UX
+- モバイルファーストなレスポンシブデザイン
+- 直感的なナビゲーション
+- フラッシュメッセージによるフィードバック
 
-* ...
+## ディレクトリ構成
+```
+app/
+├── controllers/     # コントローラ
+├── models/         # モデル
+├── views/          # ビューファイル
+├── helpers/        # ヘルパー
+└── assets/         # CSS・JavaScript
+
+config/
+├── routes.rb       # ルーティング設定
+└── initializers/   # 初期化設定
+
+db/
+└── migrate/        # マイグレーションファイル
+```
+
+## 今後の拡張予定
+- コメント機能
+- タグ機能
+- 検索機能
+- 管理者機能
+- メール通知機能
